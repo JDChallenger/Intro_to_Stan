@@ -1,6 +1,6 @@
 # Intro_to_Stan
 *
-This repository accompanies my training session **An Introduction to Bayesian Regression in Stan**. The materials are described in the slide deck **Stan_tutorial_Jan2023.pdf**
+This repository accompanies my training session **An Introduction to Bayesian Regression in Stan**. The materials are described in the slide deck *Stan_tutorial_Jan2023.pdf*
 
 Stan is a widely used platform for statistical modeling and high-performance statistical computation. Amongst other things, it can perform full Bayesian statistical inference with MCMC sampling. It has been used to solve research problems in a range of scientific fields. 
 
