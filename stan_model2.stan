@@ -14,7 +14,6 @@ model {
   a ~ normal(0,5);
   b ~ normal(0,5); //lognormal(0,1);
   sigma ~ exponential(1);
-  //r[N] mu;
   mu = a + b*(H - Hbar);
   W ~ normal(mu, sigma);
   //equivalently

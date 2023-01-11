@@ -28,3 +28,18 @@ m2 <- ulam(
 stancode(m2)
 precis(m2)
 es <- extract.samples(m2)
+
+#Notice how the stan code changes when we add the 'loglik' option to the function
+m2a <- ulam(
+  alist(
+    LCF ~ dbinom(tf, p),
+    logit(p) <- alpha,
+    alpha ~ dnorm(0,2)
+  ),
+  data = dat2, chains = 2, cores = 2, iter = 4000, log_lik = T)
+stancode(m2a)
+precis(m2a)
+
+#Likelihoods could then be extracted using e.g. loo::extract_log_lik(stanfit, parameter_name = "log_lik", merge_chains = TRUE)
+
+
