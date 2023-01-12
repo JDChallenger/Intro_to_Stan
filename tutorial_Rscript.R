@@ -2,23 +2,27 @@ library(ggplot2)
 library(rstan)
 library(rethinking)
 
-data("Howell1")
+data("Howell1") #load data (from the rethinking package)
 d <- Howell1[Howell1$age>=18,]
 
 ggplot(d) + geom_point(aes(x=height, y=weight),color= 'red', shape = 1) + theme_classic()
 
+#OLS model:
 #lm(weight ~ height, data = d)
+
+#a useful function for converting from R's names for probability distributions to the Stan versions
+lookup("dnorm")
 
 dat <- list(H = d$height, W = d$weight, Hbar = mean(d$height), N = length(d$height))
 
-lookup("dnorm")
+#Fit stan model
 fit = stan('stan_model1.stan', data = dat, iter = 3000, chains = 3)
 print(fit)
 plot(fit) # plot(fit, pars = c('a'))
 traceplot(fit, nrow = 3)
 pairs(fit)
 
-samples <- extract(fit)
+samples <- extract(fit)# get samples from the posterior distribution
 
 Hbar = mean(d$height)
 f <- function(x) mean(samples$a) + mean(samples$b)*(x-Hbar)
