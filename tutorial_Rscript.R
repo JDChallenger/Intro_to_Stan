@@ -51,7 +51,7 @@ for(i in 1:45){
     mat2[i,j] <- rnorm(1,mean = aux, sd = samples$sigma[j])
   }
 }
-h2 <- apply(mat2,1,FUN = PI)
+h2 <- apply(mat2,1,FUN = PI, prob = 0.95)
 
 df2 <- data.frame(height = seq(136,180,1), lower = h2[1,], upper = h2[2,])
 ggplot() + geom_point(data = d, aes(x=height, y=weight),color= 'red', shape = 1) + theme_classic() + 
