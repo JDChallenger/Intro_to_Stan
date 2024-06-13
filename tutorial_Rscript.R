@@ -19,7 +19,7 @@ dat <- list(H = d$height, W = d$weight, Hbar = mean(d$height), N = length(d$heig
 fit = stan('stan_model1.stan', data = dat, iter = 3000, chains = 3)
 print(fit)
 plot(fit) # plot(fit, pars = c('a'))
-traceplot(fit, nrow = 3)
+rstan::traceplot(fit, nrow = 3)
 pairs(fit)
 
 samples <- extract(fit)# get samples from the posterior distribution
