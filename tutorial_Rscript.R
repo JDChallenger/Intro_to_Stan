@@ -16,7 +16,7 @@ lookup("dnorm")
 dat <- list(H = d$height, W = d$weight, Hbar = mean(d$height), N = length(d$height))
 
 #Fit stan model
-fit = stan('stan_model1.stan', data = dat, iter = 3000, chains = 3)
+fit = rstan::stan('stan_model1.stan', data = dat, iter = 3000, chains = 3)
 print(fit)
 plot(fit) # plot(fit, pars = c('a'))
 rstan::traceplot(fit, nrow = 3)
@@ -72,7 +72,7 @@ str(d2)
 head(d2)
 
 dat2 <- list(tf = d2$total_failures, LCF = d2$LCF, N = length(d2$LCF))
-fit2 = stan('stan_model3.stan', data = dat2, iter = 4000, chains = 3)
+fit2 = rstan::stan('stan_model3.stan', data = dat2, iter = 4000, chains = 3)
 print(fit2)
 
 plot(fit2) # plot(fit, pars = c('a'))
