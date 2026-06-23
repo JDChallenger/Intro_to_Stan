@@ -27,9 +27,9 @@ m2 <- ulam(
   data = dat2, chains = 2, cores = 2, iter = 4000)
 stancode(m2)
 precis(m2)
-es <- extract.samples(m2)
-hist(es$alpha) #need to convert this to the probability scale?
-hist(inv_logit(es$alpha))
+es2 <- extract.samples(m2)
+hist(es2$alpha) #need to convert this to the probability scale?
+hist(inv_logit(es2$alpha))
 
 #Notice how the stan code changes when we add the 'loglik' option to the function
 m2a <- ulam(
@@ -42,6 +42,7 @@ m2a <- ulam(
 stancode(m2a)
 precis(m2a)
 
-#Likelihoods could then be extracted using e.g. loo::extract_log_lik(stanfit, parameter_name = "log_lik", merge_chains = TRUE)
+#Likelihoods could then be extracted using e.g. 
+#loo::extract_log_lik(stanfit, parameter_name = "log_lik", merge_chains = TRUE)
 
 

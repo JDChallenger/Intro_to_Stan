@@ -5,7 +5,8 @@ library(rethinking)
 data("Howell1") #load data (from the rethinking package)
 d <- Howell1[Howell1$age>=18,]
 
-ggplot(d) + geom_point(aes(x=height, y=weight),color= 'red', shape = 1) + theme_classic()
+ggplot(d) + geom_point(aes(x=height, y=weight),color= 'red', shape = 1) +
+  theme_classic()
 
 #OLS model:
 #lm(weight ~ height, data = d)
@@ -58,7 +59,7 @@ ggplot() + geom_point(data = d, aes(x=height, y=weight),color= 'red', shape = 1)
   geom_function(fun = f, linewidth = .7) + 
   geom_ribbon(data = df, aes(x = height, ymin = lower, ymax = upper), fill = 'grey', alpha = .55) +
   geom_ribbon(data = df2, aes(x = height, ymin = lower, ymax = upper), fill = 'grey', alpha = .2) + 
-  ylim(c(26,70))
+  ylim(c(20,70))
 
 #Task: Can you add the OLS regression line to this? 
 
@@ -67,7 +68,7 @@ ggplot() + geom_point(data = d, aes(x=height, y=weight),color= 'red', shape = 1)
 ####logistic regression model
 
 #Load data collected for this publication: https://doi.org/10.1186/s12936-020-03520-1
-d2 <- readRDS('minimal_data.rds')
+d2 <- readRDS('data/minimal_data.rds')
 str(d2)
 head(d2)
 
@@ -76,7 +77,7 @@ fit2 = rstan::stan('stan_model3.stan', data = dat2, iter = 4000, chains = 3)
 print(fit2)
 
 plot(fit2) # plot(fit, pars = c('a'))
-traceplot(fit2)
+rstan::traceplot(fit2)
 samples2 <- extract(fit2)
 hist(samples2$alpha)
 hist(inv_logit(samples2$alpha))
