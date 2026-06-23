@@ -9,3 +9,5 @@ Stan interfaces with the most popular data analysis languages (R, Python, shell,
 In addition to (fairly up-to-date) implementations of R & Rstudio, there are some additional packages you’ll need to install- please have a go at this before the session. Installing Stan can be tricky, as you will need a C++ toolchain. There is some guidance on installation here: https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started
  
 We will also use some functions from the rethinking package, which you should install after installing RStan. This package is not available on CRAN, but can be installed here: https://github.com/rmcelreath/rethinking
+
+The file 'installation_instructions.R' may be helpful.
